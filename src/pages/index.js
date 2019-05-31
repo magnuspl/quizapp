@@ -3,8 +3,10 @@ import { Link, graphql } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
+import Quiz from '../components/questions/quiz';
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
+import {Box, Heading, Text} from 'grommet';
 
 class BlogIndex extends React.Component {
   render() {
@@ -15,29 +17,18 @@ class BlogIndex extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="All posts" />
-        <Bio />
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
-          return (
-            <div key={node.fields.slug}>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
-            </div>
-          )
-        })}
+        <Box
+          direction="row"
+          justify="between"
+          align="center"
+          width="xlarge"
+          alignSelf="center"
+          gap="medium"
+          >
+        </Box>
+        <Box align="center">
+        <Quiz/>
+        </Box>
       </Layout>
     )
   }

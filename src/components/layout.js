@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
-
 import { rhythm, scale } from "../utils/typography"
+import {Text, Box} from 'grommet';
 
 class Layout extends React.Component {
   render() {
@@ -14,8 +14,11 @@ class Layout extends React.Component {
         <h1
           style={{
             ...scale(1.5),
-            marginBottom: rhythm(1.5),
+            marginBottom:0,
             marginTop: 0,
+            display: 'flex',
+            flexDirection:'row',
+            justifyContent:'space-between',
           }}
         >
           <Link
@@ -26,8 +29,21 @@ class Layout extends React.Component {
             }}
             to={`/`}
           >
-            {title}
+            .{title}
           </Link>
+          <div>
+          <Link
+            style={{
+              boxShadow: `none`,
+              textDecoration: `none`,
+              color: `inherit`,
+            }}
+            to={`/`}
+          >
+            <Text>/about</Text>
+          </Link>
+
+          </div>
         </h1>
       )
     } else {
@@ -52,21 +68,31 @@ class Layout extends React.Component {
       )
     }
     return (
-      <div
-        style={{
-          marginLeft: `auto`,
-          marginRight: `auto`,
-          maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-        }}
-      >
-        <header>{header}</header>
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+      //background: #F5F6F7;
+      <div style={{
+        background: '#F5F6F7',
+        height:'100vh',
+      }}>
+        <div
+          style={{
+            marginLeft: `auto`,
+            marginRight: `auto`,
+            maxWidth: '82rem',
+
+            background: 'white',
+            boxShadow: '0 16px 48px rgba(222, 223, 224, 0.12)',
+            //padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+          }}
+        >
+          <header style={{
+            background: '#f4f5f5',
+            padding: '15px'
+          }}>{header}</header>
+          <main>{children}</main>
+          <footer>
+
+          </footer>
+        </div>
       </div>
     )
   }
